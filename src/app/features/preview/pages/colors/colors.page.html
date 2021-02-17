@@ -1,0 +1,35 @@
+<div class="layout">
+    <div class="item bg-color-primary">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    </div>
+    <div class="item bg-color-accent">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    </div>
+    <div class="item bg-color-background">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    </div>
+    <div class="item bg-color-background-muted">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    </div>
+    <div class="item bg-color-foreground">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    </div>
+    <div class="item bg-color-foreground-muted">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    </div>
+</div>
+
+<ng-template #content>
+    <div class="content-container bg-color-primary">
+    </div>
+    <div class="content-container bg-color-accent">
+    </div>
+    <div class="content-container bg-color-background">
+    </div>
+    <div class="content-container bg-color-background-muted">
+    </div>
+    <div class="content-container bg-color-foreground">
+    </div>
+    <div class="content-container bg-color-foreground-muted">
+    </div>
+</ng-template>

@@ -1,0 +1,57 @@
+@import "../../../../../styles/_variables.less";
+
+div {
+  display: grid;
+}
+
+.layout {
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  .item {
+    padding: 2rem;
+    gap: 2rem;
+
+    > label {
+      background-color: white;
+      border: 1px black solid;
+      color: black;
+      padding: .25em;
+    }
+  }
+}
+
+@colors:  {
+  color-primary: @color-primary;
+  color-accent: @color-accent;
+  color-background: @color-background;
+  color-foreground: @color-foreground;
+  color-background-muted: @color-background-muted;
+  color-foreground-muted: @color-foreground-muted;
+};
+
+each(@colors, {
+  .bg-@{key} {
+    background-color: @value;
+  }
+})
+
+each(@colors, {
+  .cl-@{key} {
+    color: @value;
+  }
+})
+
+.content-container {
+  grid-template-rows: auto 1fr;
+  padding: .5em;
+  gap: .5em;
+}
+
+each(@colors, {
+  .bg-@{key} {
+    > .bg-@{key} {
+      border: 2px rgb(255, 0, 242) solid;
+    }
+  }
+})

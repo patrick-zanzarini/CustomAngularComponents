@@ -1,0 +1,104 @@
+@import "../_variables.less";
+
+@solid-mix: 20%;
+
+/* MIXINS */
+
+.darken(@color) {
+  &.darken {
+    background-color: mix(@color-foreground, @color, @solid-mix);
+
+    &:active,
+    &:hover {
+      background-color: mix(@color-foreground, @color, @solid-mix * 1.5);
+    }
+  }
+}
+
+.button(@color) {
+  display: grid;
+  grid-template-columns: auto;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  place-items: center stretch;
+  gap: 0.6em;
+  padding: 0.5em 0.7em;
+
+  color: @color;
+  background-color: @color-background;
+
+  border-radius: 0;
+  border: 0;
+  box-shadow: inset 0px 0px 0px 1px fade(@color, 50%);
+
+  font-family: @font-family-base;
+  font-weight: @regular;
+
+  transition: 0.2s;
+  cursor: pointer;
+
+  &:active,
+  &:hover {
+    color: @color;
+    background-color: mix(@color, @color-background, 10%);
+    box-shadow: inset 0px 0px 0px 1px @color;
+  }
+
+  &:active {
+    box-shadow: inset 0px 0px 0px 1px @color, 0 0 0.5em @color;
+    z-index: 100;
+  }
+}
+
+.button-solid(@color) {
+  background-color: @color;
+  color: @color-background;
+
+  &:not(:active) {
+    box-shadow: none;
+  }
+
+  .darken(@color);
+
+  &:active,
+  &:hover {
+    background-color: mix(@color-foreground, @color, @solid-mix);
+  }
+
+  &:active {
+    box-shadow: 0 0 0.5em @color;
+    z-index: 100;
+  }
+}
+
+@color-list: {
+  danger: @color-danger;
+  primary: @color-primary;
+  success: @color-success;
+};
+
+/* CLASSES */
+
+each(@color-list, {
+  .btn.@{key} {
+    .button(@value)
+  }
+
+  .btn.solid.@{key} {
+    .button-solid(@value);
+  }
+});
+
+.btn {
+  .button(@color-accent);
+}
+
+.btn.solid {
+  .button-solid(@color-accent);
+}
+
+.btn-group {
+  display: grid;
+  grid-auto-flow: column;
+  transition: 0.2s;
+}
