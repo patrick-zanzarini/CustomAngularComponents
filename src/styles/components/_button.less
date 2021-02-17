@@ -22,7 +22,8 @@
   grid-auto-flow: column;
   place-items: center stretch;
   gap: 0.6em;
-  padding: 0.5em 0.7em;
+  height: @form-item-height;
+  padding: 0 0.7em;
 
   color: @color;
   background-color: @color-background;
@@ -38,7 +39,8 @@
   cursor: pointer;
 
   &:active,
-  &:hover {
+  &:hover,
+  &:focus {
     color: @color;
     background-color: mix(@color, @color-background, 10%);
     box-shadow: inset 0px 0px 0px 1px @color;
@@ -61,7 +63,8 @@
   .darken(@color);
 
   &:active,
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: mix(@color-foreground, @color, @solid-mix);
   }
 
@@ -80,20 +83,20 @@
 /* CLASSES */
 
 each(@color-list, {
-  .btn.@{key} {
+  button.@{key} {
     .button(@value)
   }
 
-  .btn.solid.@{key} {
+  button.solid.@{key} {
     .button-solid(@value);
   }
 });
 
-.btn {
+button {
   .button(@color-accent);
 }
 
-.btn.solid {
+button.solid {
   .button-solid(@color-accent);
 }
 

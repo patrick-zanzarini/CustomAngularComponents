@@ -1,18 +1,12 @@
-.layout {
-  padding: 1rem;
+.button-row {
+  display: flex;
+  > * {
+    margin-right: 0.5em;
+  }
+}
+
+.button-grid {
   display: grid;
-  gap: 1em;
-
-  .button-row {
-    display: flex;
-    > * {
-      margin-right: 0.5em;
-    }
-  }
-
-  .button-grid {
-    display: grid;
-    gap: 0.5em;
-    grid-auto-flow: column;
-  }
+  gap: 0.5em;
+  grid-auto-flow: column;
 }

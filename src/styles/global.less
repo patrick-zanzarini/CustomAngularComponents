@@ -8,3 +8,29 @@ html,
 body {
   min-height: 100vh;
 }
+
+.page-layout {
+  padding: 1rem;
+  display: grid;
+  gap: 1em;
+}
+
+.background-muted {
+  background-color: @color-background-muted;
+}
+
+.background-default {
+  background-color: @color-background;
+}
+
+.footer {
+  display: flex;
+  > * {
+    margin-right: 0.5em;
+  }
+}
+
+.default-font {
+  font-family: @font-family-base;
+  font-weight: @regular;
+}

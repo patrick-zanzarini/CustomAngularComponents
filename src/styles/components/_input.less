@@ -1,0 +1,20 @@
+@import "../_variables.less";
+
+input {
+  font-family: @font-family-base;
+  font-weight: @regular;
+  padding: 0 0.6em;
+  height: @form-item-height - 2px;
+  transition: 0.2s;
+
+  border: 1px fade(@color-accent, 50%) solid;
+  &:active,
+  &:hover {
+    border-color: @color-accent;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0.35em @color-accent;
+    z-index: 100;
+  }
+}

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ButtonsPage } from './pages/buttons/buttons.page';
 import { ColorsPage } from './pages/colors/colors.page';
+import { FormsPage } from './pages/forms/forms.page';
 
 const routes: Routes = [
   {
@@ -13,10 +14,15 @@ const routes: Routes = [
     path: 'colors',
     component: ColorsPage,
   },
+  
+  {
+    path: 'forms',
+    component: FormsPage,
+  },
 
   {
     path: '**',
-    redirectTo: '/buttons',
+    redirectTo: '/forms',
   },
 ];
 
