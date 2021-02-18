@@ -4,7 +4,7 @@
 
 /* MIXINS */
 
-.darken(@color) {
+.darken-mixin(@color) {
   &.darken {
     background-color: mix(@color-foreground, @color, @solid-mix);
 
@@ -38,15 +38,14 @@
   transition: 0.2s;
   cursor: pointer;
 
-  &:active,
-  &:hover,
-  &:focus {
+  &:active {
     color: @color;
     background-color: mix(@color, @color-background, 10%);
     box-shadow: inset 0px 0px 0px 1px @color;
   }
 
-  &:active {
+  &:hover,
+  &:focus {
     box-shadow: inset 0px 0px 0px 1px @color, 0 0 0.5em @color;
     z-index: 100;
   }
@@ -56,20 +55,15 @@
   background-color: @color;
   color: @color-background;
 
-  &:not(:active) {
-    box-shadow: none;
-  }
+  .darken-mixin(@color);
 
-  .darken(@color);
-
-  &:active,
-  &:hover,
-  &:focus {
+  &:active {
     background-color: mix(@color-foreground, @color, @solid-mix);
   }
 
-  &:active {
-    box-shadow: 0 0 0.5em @color;
+  &:hover,
+  &:focus {
+    box-shadow: inset 0px 0px 0px 1px @color-background, 0 0 0.5em @color;
     z-index: 100;
   }
 }
