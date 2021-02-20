@@ -1,16 +1,22 @@
 @import "../_variables.less";
+@import "../_mixins.less";
 
-@solid-mix: 20%;
+@active-solid-mix: 20%;
+@color-disabled: mix(@color-foreground, @color-background, 50%);
 
 /* MIXINS */
 
 .darken-mixin(@color) {
   &.darken {
-    background-color: mix(@color-foreground, @color, @solid-mix);
+    background-color: mix(@color-foreground, @color, @active-solid-mix);
 
-    &:active,
-    &:hover {
-      background-color: mix(@color-foreground, @color, @solid-mix * 1.5);
+    &:active {
+      background-color: mix(@color-foreground, @color, @active-solid-mix * 2);
+    }
+
+    &:disabled {
+      background-color: mix(@color-foreground, @color-disabled, @active-solid-mix);
+      box-shadow: none;
     }
   }
 }
@@ -22,15 +28,16 @@
   grid-auto-flow: column;
   place-items: center stretch;
   gap: 0.6em;
-  height: @form-item-height;
-  padding: 0 0.7em;
+  min-height: @form-item-height;
+  padding: 0.4em 0.7em;
 
   color: @color;
   background-color: @color-background;
 
   border-radius: 0;
   border: 0;
-  box-shadow: inset 0px 0px 0px 1px fade(@color, 50%);
+
+  .box-outline(fade(@color, 50%));
 
   font-family: @font-family-base;
   font-weight: @regular;
@@ -41,13 +48,18 @@
   &:active {
     color: @color;
     background-color: mix(@color, @color-background, 10%);
-    box-shadow: inset 0px 0px 0px 1px @color;
+    .box-outline(@color);
   }
 
   &:hover,
   &:focus {
-    box-shadow: inset 0px 0px 0px 1px @color, 0 0 0.5em @color;
+    .box-outline-glow(@color, @color);
     z-index: 100;
+  }
+
+  &:disabled {
+    color: @color-disabled;
+    .box-outline(@color-disabled);
   }
 }
 
@@ -58,13 +70,18 @@
   .darken-mixin(@color);
 
   &:active {
-    background-color: mix(@color-foreground, @color, @solid-mix);
+    background-color: mix(@color-foreground, @color, @active-solid-mix);
   }
 
   &:hover,
   &:focus {
-    box-shadow: inset 0px 0px 0px 1px @color-background, 0 0 0.5em @color;
+    .box-outline-glow(@color-background, @color);
     z-index: 100;
+  }
+
+  &:disabled {
+    background-color: @color-disabled;
+    box-shadow: none;
   }
 }
 

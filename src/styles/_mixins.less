@@ -1,0 +1,11 @@
+.box-outline(@outline-color) {
+  box-shadow: inset 0px 0px 0px 1px @outline-color;
+}
+
+.box-outline-glow(@outline-color, @glow-color) {
+  box-shadow: inset 0px 0px 0px 1px @outline-color, 0 0 0.5em @glow-color;
+}
+
+.box-glow(@glow-color) {
+  box-shadow: 0 0 0.5em @glow-color;
+}

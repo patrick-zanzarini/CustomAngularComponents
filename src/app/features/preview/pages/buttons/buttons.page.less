@@ -1,3 +1,5 @@
+@import "../../../../../styles/_variables.less";
+
 .button-row {
   display: flex;
   > * {
@@ -9,4 +11,10 @@
   display: grid;
   gap: 0.5em;
   grid-auto-flow: column;
+}
+
+.card {
+  background-color: @color-background;
+  padding: 1rem;  
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
 }
